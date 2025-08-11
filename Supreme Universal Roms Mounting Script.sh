@@ -236,7 +236,7 @@ Choose an option:" 20 70 4 \
           sudo rm -rf "\$ROM_PATH"
           sudo mv "\$ROM_BACKUP" "\$ROM_PATH"
           remove_unit
-          msg "Mount failed — restored local ROMs."
+          msg "Mount failed. Restored local ROMs."
         fi
       fi
       ;;
