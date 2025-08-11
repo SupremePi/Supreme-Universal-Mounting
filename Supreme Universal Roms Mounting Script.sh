@@ -162,16 +162,16 @@ TimeoutSec=30
 WantedBy=multi-user.target
 EOM
 
-  sudo systemctl daemon-reexec
-  sudo systemctl enable "\$MOUNT_UNIT"
-  sudo systemctl start "\$MOUNT_UNIT"
+  sudo systemctl daemon-reexec >/dev/null 2>&1
+  sudo systemctl enable "\$MOUNT_UNIT" >/dev/null 2>&1
+  sudo systemctl start "\$MOUNT_UNIT" >/dev/null 2>&1
 }
 
 remove_unit() {
-  sudo systemctl stop "\$MOUNT_UNIT"
-  sudo systemctl disable "\$MOUNT_UNIT"
-  sudo rm -f "\$MOUNT_PATH"
-  sudo systemctl daemon-reexec
+  sudo systemctl stop "\$MOUNT_UNIT" >/dev/null 2>&1
+  sudo systemctl disable "\$MOUNT_UNIT" >/dev/null 2>&1
+  sudo rm -f "\$MOUNT_PATH" >/dev/null 2>&1
+  sudo systemctl daemon-reexec >/dev/null 2>&1
 }
 
 rerun() {
@@ -198,7 +198,7 @@ while true; do
   SHARE_DISPLAY="\$SHARE_PATH"
   [ -n "\$SUBFOLDER" ] && SHARE_DISPLAY="\$SHARE_PATH/\$SUBFOLDER"
 
-  dialog --title "Mount Toggle — \$ROM_PATH" --menu "\
+  dialog --title "Mount Toggle set to: \$ROM_PATH" --menu "\
 Currently set to mount:
 
   From: \$SHARE_DISPLAY
